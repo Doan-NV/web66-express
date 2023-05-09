@@ -13,6 +13,18 @@ const verifyUser = (req, res, next) => {
   }
 }
 
+const getInfo = (token) => {
+  try {
+    const data = jwt.verify(token, 'aaaaa');
+    if (!data) {
+      res.send("error verify token");
+    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 module.exports = {
-  verifyUser
+  verifyUser,
+  getInfo
 }
